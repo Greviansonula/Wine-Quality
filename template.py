@@ -11,12 +11,12 @@ dirs = [
 
 for dir_ in dirs:
     os.makedirs(dir_, exist_ok=True)
-    with open(os.path.join(dir_, '.gitkeep')) as f:
+    with open(os.path.join(dir_, '.gitkeep'), "w") as f:
         pass
 
 files = [
     "dvc.yaml",
-    "parameters.yaml",
+    "params.yaml",
     ".gitignore",
     os.path.join("src", "___init__.py")
 ]
