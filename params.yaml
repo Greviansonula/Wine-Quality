@@ -18,6 +18,6 @@ estimators:
   ElasticNet:
     params:
       alpha: 0.88
-      l1_ration: 0.89
+      l1_ratio: 0.89
 
 model_dir: saved_models
