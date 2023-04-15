@@ -52,12 +52,34 @@ def train_and_evaluate(config_path):
 
     (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
 
-    print(
-        f"""RMSE {rmse}\n
-         MAE {mae}\n
-         R2 SCORE {r2}"""
-    )
+    print("ElasticNet model (alpha=%f, l1_ratio=%f):" % (alpha, l1_ratio))
+    print(f"  RMSE {rmse}")
+    print(f"  MAE {mae}")
+    print(f"  R2 SCORE {r2}")
 
+    scores_file = config["reports"]["scores"]
+    params_file = config["reports"]["params"]
+    with open(scores_file, "w") as f:
+        scores = {
+            "rmse": rmse,
+            "mae": mae,
+            "r2": r2
+        }
+
+        json.dump(scores, f, indent=4)
+
+    with open(params_file, "w") as f:
+        scores = {
+            "alpha": alpha,
+            "l1_ratio": l1_ratio
+        }
+
+        json.dump(scores, f, indent=4)
+
+    os.makedirs(model_dir,exist_ok=True)
+    model_path = os.path.join(model_dir, "model.joblib")
+
+    joblib.dump(lr, model_path)
 
 
 
