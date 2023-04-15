@@ -9,3 +9,4 @@ dvc-s3
 pandas
 pytest
 tox
+flake8
