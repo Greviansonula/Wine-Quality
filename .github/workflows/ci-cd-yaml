@@ -1,0 +1,16 @@
+name: Wine Quality Application
+
+on: 
+  push:
+    branches:
+    - main
+  pull_requests:
+    branches:
+    - main
+
+jobs:
+  build:
+    build-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
